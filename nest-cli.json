@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/moon-puma-backend/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/moon-puma-backend/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/moon-puma-backend",
+  "projects": {
+    "files": {
+      "type": "application",
+      "root": "apps/files",
+      "entryFile": "main",
+      "sourceRoot": "apps/files/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/files/tsconfig.app.json"
+      }
+    },
+    "moon-puma-backend": {
+      "type": "application",
+      "root": "apps/moon-puma-backend",
+      "entryFile": "main",
+      "sourceRoot": "apps/moon-puma-backend/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/moon-puma-backend/tsconfig.app.json"
+      }
+    }
+  }
+}
