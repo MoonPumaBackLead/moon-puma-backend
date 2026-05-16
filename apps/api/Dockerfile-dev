@@ -20,4 +20,5 @@ COPY --from=build /opt/app/libs/prisma ./libs/prisma
 COPY --from=build /opt/app/prisma ./prisma
 COPY --from=build /opt/app/prisma.config.ts ./prisma.config.ts
 
+EXPOSE 3000
 CMD ["sh", "-c", "yarn prisma migrate deploy --schema=./libs/prisma/schema.prisma && node ./dist/main.js"]
