@@ -1,0 +1,23 @@
+FROM node:24.15.0-alpine3.22 as build
+WORKDIR /opt/app
+
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
+
+COPY . .
+RUN yarn prisma generate --schema=./libs/prisma/schema.prisma
+RUN yarn prisma migrate deploy --schema=./libs/prisma/schema.prisma
+RUN yarn build api
+
+FROM node:24.15.0-alpine3.22
+WORKDIR /opt/app
+
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile --production
+
+COPY --from=build /opt/app/dist/apps/api ./dist
+COPY --from=build /opt/app/libs/prisma ./libs/prisma
+COPY --from=build /opt/app/prisma ./prisma
+COPY --from=build /opt/app/prisma.config.ts ./prisma.config.ts
+
+CMD ["sh", "-c", "yarn prisma migrate deploy --schema=./libs/prisma/schema.prisma && node ./dist/main.js"]

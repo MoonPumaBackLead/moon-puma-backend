@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:15
+    container_name: moon-puma-db-container
+    environment:
+      POSTGRES_DB: moon-puma-db
+      POSTGRES_USER: moon-puma
+      POSTGRES_PASSWORD: moon-puma
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U moon-puma -d moon-puma-db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - puma-network
+
+  api:
+    ports:
+      - "8000:3000"
+    container_name: moon-puma-api-container
+    environment:
+      DATABASE_URL: postgresql://moon-puma:moon-puma@db:5432/moon-puma-db?schema=public
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile-dev
+    restart: always
+    volumes:
+      - .env:/opt/app/.env
+    networks:
+      - puma-network
+    depends_on:
+      db:
+        condition: service_healthy
+
+networks:
+  puma-network:
+    driver: bridge
+
+volumes:
+  pgdata:
+    driver: local
