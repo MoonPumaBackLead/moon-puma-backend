@@ -7,7 +7,7 @@ pipeline {
         NAMESPACE = "moonpuma-site"
         REGISTRY_HOSTNAME = "kdrenata"
         PROJECT = "moon-puma-backend"
-        SERVICE="files"
+        SERVICE="api"
         REGISTRY = "registry.hub.docker.com"
         DEPLOYMENT_NAME = "moon-puma-backend-deployment"
         IMAGE_NAME = "${env.BUILD_ID}_${env.ENV_TYPE}_${env.GIT_COMMIT}"
