@@ -3,13 +3,13 @@ pipeline {
     agent any
     environment {
         ENV_TYPE = "production"
-        PORT = 4312
+        PORT = 4319
         NAMESPACE = "moonpuma-site"
         REGISTRY_HOSTNAME = "kdrenata"
-        PROJECT = "moon-puma-backend"
-        SERVICE="files"
+        PROJECT = "moonpuma-back-gateway"
+        SERVICE="api"
         REGISTRY = "registry.hub.docker.com"
-        DEPLOYMENT_NAME = "moon-puma-backend-deployment"
+        DEPLOYMENT_NAME = "moonpuma-back-gateway-deployment"
         IMAGE_NAME = "${env.BUILD_ID}_${env.ENV_TYPE}_${env.GIT_COMMIT}"
         DOCKER_BUILD_NAME = "${env.REGISTRY_HOSTNAME}/${env.PROJECT}:${env.IMAGE_NAME}"
     }
