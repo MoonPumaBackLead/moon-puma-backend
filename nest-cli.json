@@ -33,6 +33,15 @@
       "root": "libs/prisma",
       "sourceRoot": "libs/prisma/src",
       "entryFile": "index"
+    },
+    "shared-types": {
+      "type": "library",
+      "root": "libs/shared-types",
+      "entryFile": "index",
+      "sourceRoot": "libs/shared-types/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/shared-types/tsconfig.lib.json"
+      }
     }
   }
 }

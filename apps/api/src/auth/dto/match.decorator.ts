@@ -1,0 +1,19 @@
+import { registerDecorator, ValidationArguments, ValidationOptions } from 'class-validator';
+
+export function MatchesField(field: string, options?: ValidationOptions) {
+  return (object: object, propertyName: string) => {
+    registerDecorator({
+      name: 'matchesField',
+      target: object.constructor,
+      propertyName,
+      constraints: [field],
+      options: { message: `${propertyName} must match ${field}`, ...options },
+      validator: {
+        validate(value: unknown, args: ValidationArguments) {
+          const obj = args.object as Record<string, unknown>;
+          return value === obj[args.constraints[0]];
+        },
+      },
+    });
+  };
+}
