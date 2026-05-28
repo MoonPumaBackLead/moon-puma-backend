@@ -12,7 +12,7 @@ async function bootstrap() {
   const prefix = config.get<string>('API_PREFIX', 'api');
   const corsOrigin = config.get<string>('CORS_ORIGIN', 'http://localhost:3000');
 
-  app.setGlobalPrefix(prefix);
+  app.setGlobalPrefix(prefix ?? 'api/v1');
   app.enableCors({ origin: corsOrigin, credentials: true });
   app.useGlobalPipes(
     new ValidationPipe({
@@ -23,9 +23,8 @@ async function bootstrap() {
   );
   app.useGlobalFilters(new HttpExceptionFilter());
 
-  await app.listen(port);
+  await app.listen(process.env.PORT ?? port);
   // eslint-disable-next-line no-console
   console.log(`API listening on http://localhost:${port}/${prefix}`);
-
 }
 bootstrap();
