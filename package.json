@@ -7,8 +7,10 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
+    "build:api": "nest build",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
+    "start:api": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/apps/api/main",
@@ -80,7 +82,7 @@
       "<rootDir>/libs/"
     ],
     "moduleNameMapper": {
-      "^shared/shared(|/.*)$": "<rootDir>/libs/shared/src/$1"
+      "^@/libs/prisma(|/.*)$": "<rootDir>/libs/prisma/src/$1"
     }
   }
 }
