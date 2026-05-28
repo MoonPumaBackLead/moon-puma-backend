@@ -1,6 +1,6 @@
 {
   "name": "moon-puma-backend",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "author": "",
   "private": true,
@@ -93,7 +93,8 @@
       "<rootDir>/libs/"
     ],
     "moduleNameMapper": {
-      "^@/libs/prisma(|/.*)$": "<rootDir>/libs/prisma/src/$1"
+      "^@/apps/(.*)$": "<rootDir>/apps/$1",
+      "^@/libs/(.*)$": "<rootDir>/libs/$1"
     }
   }
 }

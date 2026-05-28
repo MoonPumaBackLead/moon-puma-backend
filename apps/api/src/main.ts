@@ -9,7 +9,7 @@ async function bootstrap() {
   const config = app.get(ConfigService);
 
   const port = config.get<number>('API_PORT', 3001);
-  const prefix = config.get<string>('API_PREFIX', 'api');
+  const prefix = config.get<string>('API_PREFIX', 'api/v1');
   const corsOrigin = config.get<string>('CORS_ORIGIN', 'http://localhost:3000');
 
   app.setGlobalPrefix(prefix ?? 'api/v1');

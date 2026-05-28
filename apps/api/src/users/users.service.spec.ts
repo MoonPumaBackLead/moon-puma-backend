@@ -1,15 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UsersService } from './users.service';
-import { PrismaService } from '../prisma/prisma.service';
+import { UsersRepository } from '@/apps/api/src/users/users.repository';
 
-const mockPrismaService = {
-  user: {
-    create: jest.fn(),
-    findMany: jest.fn(),
-    findFirst: jest.fn(),
-    update: jest.fn(),
-    delete: jest.fn(),
-  },
+const mockUsersRepository = {
+  findByEmailOrLogin: jest.fn(),
+  findById: jest.fn(),
 };
 
 describe('UsersService', () => {
@@ -19,7 +14,7 @@ describe('UsersService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         UsersService,
-        { provide: PrismaService, useValue: mockPrismaService },
+        { provide: UsersRepository, useValue: mockUsersRepository },
       ],
     }).compile();
 

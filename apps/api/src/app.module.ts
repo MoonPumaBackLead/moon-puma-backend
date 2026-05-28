@@ -4,12 +4,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+// import { CustomMailerModule } from '@/apps/api/src/adapters/mailer/mailer.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     UsersModule,
     AuthModule,
+    // CustomMailerModule
   ],
   controllers: [AppController],
   providers: [AppService],
