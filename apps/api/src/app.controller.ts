@@ -9,8 +9,13 @@ export class AppController {
     // private readonly mailerService: MailerService
   ) {}
 
-  @Get('version-app')
+  @Get()
   getHello(): string {
+    return this.appService.getHello();
+  }
+
+  @Get('version-app')
+  getVersion(): string {
     const appVersion = process.env.npm_package_version;
     return `Version: ${appVersion}`;
   }
