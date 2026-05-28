@@ -25,23 +25,8 @@
       "@/apps/*": [
         "apps/*"
       ],
-      "@libs/prisma": [
-        "libs/prisma/src/index"
-      ],
-      "@libs/prisma/*": [
-        "libs/prisma/src/*"
-      ],
-      "@libs/shared-types": [
-        "libs/shared-types/src"
-      ],
-      "@libs/shared-types/*": [
-        "libs/shared-types/src/*"
-      ],
-      "shared/shared": [
-        "libs/shared/src"
-      ],
-      "shared/shared/*": [
-        "libs/shared/src/*"
+      "@/libs/*": [
+        "libs/*"
       ]
     }
   }
