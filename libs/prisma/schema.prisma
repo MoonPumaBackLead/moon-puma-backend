@@ -15,17 +15,19 @@ datasource db {
 }
 
 model User {
-  id    Int     @default(autoincrement()) @id
-  email String  @unique
-  name  String?
-  posts Post[]
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  login        String?  @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
-model Post {
-  id        Int      @default(autoincrement()) @id
-  title     String
-  content   String?
-  published Boolean? @default(false)
-  author    User?    @relation(fields: [authorId], references: [id])
-  authorId  Int?
-}
+// model Account {
+//   id         String   @id @default(uuid()) @db.Uuid
+//   userId     String?  @unique @db.Uuid
+//   code       String
+//   isVerified Boolean
+//   expiredAt  DateTime @default(now())
+//   user       User?    @relation(fields: [userId], references: [id])
+// }

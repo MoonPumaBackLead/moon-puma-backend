@@ -22,21 +22,8 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@/apps/*": [
-        "apps/*"
-      ],
-      "@libs/prisma": [
-        "libs/prisma/src/index"
-      ],
-      "@libs/prisma/*": [
-        "libs/prisma/src/*"
-      ],
-      "shared/shared": [
-        "libs/shared/src"
-      ],
-      "shared/shared/*": [
-        "libs/shared/src/*"
-      ]
+      "@/apps/*": ["apps/*"],
+      "@/libs/*": ["libs/*"]
     }
   }
 }
