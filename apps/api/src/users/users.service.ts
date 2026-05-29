@@ -1,1 +1,16 @@
-import { Injectable } from '@nestjs/common';import { User } from './entities/user.entity';import { UsersRepository } from '@/apps/api/src/users/users.repository';@Injectable()export class UsersService {  constructor(private usersRepository: UsersRepository) {}  public findByEmailOrLogin(email: string, login: string): Promise<User | null> {    return this.usersRepository.findByEmailOrLogin(email, login);  }  findById(id: string): Promise<User | null> {    return this.usersRepository.findById(id);  }}
+import { Injectable } from '@nestjs/common';
+import { User } from './entities/user.entity';
+import { UsersRepository } from '@/apps/api/src/users/users.repository';
+
+@Injectable()
+export class UsersService {
+  constructor(private usersRepository: UsersRepository) {}
+
+  public findByEmailOrLogin(email: string, login: string): Promise<User | null> {
+    return this.usersRepository.findByEmailOrLogin(email, login);
+  }
+
+  findById(id: string): Promise<User | null> {
+    return this.usersRepository.findById(id);
+  }
+}
