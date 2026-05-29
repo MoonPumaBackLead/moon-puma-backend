@@ -15,19 +15,21 @@ datasource db {
 }
 
 model User {
-  id           String   @id @default(cuid())
-  email        String   @unique
-  passwordHash String
-  login        String?  @unique
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id               String            @id @default(cuid())
+  email            String            @unique
+  passwordHash     String
+  login            String?           @unique
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  confirmationData ConfirmationData?
 }
 
-// model Account {
-//   id         String   @id @default(uuid()) @db.Uuid
-//   userId     String?  @unique @db.Uuid
-//   code       String
-//   isVerified Boolean
-//   expiredAt  DateTime @default(now())
-//   user       User?    @relation(fields: [userId], references: [id])
-// }
+model ConfirmationData {
+  id               String   @id @default(uuid()) @db.Uuid
+  userId           String?  @unique @db.Uuid
+  confirmationCode String
+  recoveryCode     String   //не забыть сделать поле nullable
+  isVerified       Boolean
+  expiredAt        DateTime @default(now())
+  user             User?    @relation(fields: [userId], references: [id])
+}
