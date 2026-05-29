@@ -1,8 +1,4 @@
-import {
-  ConflictException,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { buildAuthResponse } from '@/apps/api/src/auth/utils/build-auth-response';
 import { UsersRepository } from '@/apps/api/src/users/users.repository';
 import * as bcrypt from 'bcryptjs';
@@ -17,6 +13,7 @@ export class AuthService {
   constructor(
     private readonly jwtService: JwtService,
     private readonly usersRepository: UsersRepository,
+    private readonly mailerService: MailerService,
   ) {}
 
   async login({ email, password }: LoginDto): Promise<AuthResponse> {
@@ -37,7 +34,11 @@ export class AuthService {
       throw new ConflictException('Email or login already in use');
     }
     const passwordHash = await bcrypt.hash(password, 10);
-    const newUser = await this.usersRepository.createUser({ login: username, email, passwordHash });
+    const newUser = await this.usersRepository.createUser({
+      login: username,
+      email,
+      passwordHash,
+    });
     return buildAuthResponse(newUser, this.jwtService);
   }
 }

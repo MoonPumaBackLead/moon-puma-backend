@@ -24,7 +24,9 @@
     "prisma:migrate": "prisma migrate dev",
     "prisma:migrate:deploy": "prisma migrate deploy",
     "prisma:studio": "prisma studio",
-    "prisma:format": "prisma format"
+    "prisma:format": "prisma format",
+    "prettier": "prettier --write \"**/*.{ts,js,json,md}\"",
+    "prettier:check": "prettier --check \"**/*.{ts,js,json,md}\""
   },
   "dependencies": {
     "@nestjs-modules/mailer": "^2.3.6",

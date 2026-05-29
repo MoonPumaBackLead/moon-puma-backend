@@ -18,15 +18,10 @@ import { UsersModule } from '../users/users.module';
     JwtModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: (
-        config: ConfigService,
-      ): Promise<JwtModuleOptions> | JwtModuleOptions => ({
+      useFactory: (config: ConfigService): Promise<JwtModuleOptions> | JwtModuleOptions => ({
         secret: config.get<string>('JWT_SECRET'),
         signOptions: {
-          expiresIn: config.get<JwtSignOptions['expiresIn']>(
-            'JWT_EXPIRES_IN',
-            '7d',
-          ),
+          expiresIn: config.get<JwtSignOptions['expiresIn']>('JWT_EXPIRES_IN', '7d'),
         },
       }),
     }),
