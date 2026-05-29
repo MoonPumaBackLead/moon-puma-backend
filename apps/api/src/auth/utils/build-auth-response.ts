@@ -1,17 +1,1 @@
-import { JwtService } from '@nestjs/jwt';
-import { User } from '@/libs/prisma';
-import { JwtPayload } from '@/libs/shared-types';
-
-export function buildAuthResponse(user: User, jwtService: JwtService): any {
-  const payload: JwtPayload = { sub: user.id, email: user.email };
-  return {
-    accessToken: jwtService.sign(payload),
-    user: {
-      id: user.id,
-      email: user.email,
-      login: user.login,
-      createdAt: user.createdAt.toISOString(),
-      updatedAt: user.updatedAt.toISOString(),
-    },
-  };
-}
+import { JwtService } from '@nestjs/jwt';import { User } from '@/libs/prisma';import { JwtPayload } from '@/libs/shared-types';export function buildAuthResponse(user: User, jwtService: JwtService): any {  const payload: JwtPayload = { sub: user.id, email: user.email };  return {    accessToken: jwtService.sign(payload),    user: {      id: user.id,      email: user.email,      login: user.login,      createdAt: user.createdAt.toISOString(),      updatedAt: user.updatedAt.toISOString(),    },  };}

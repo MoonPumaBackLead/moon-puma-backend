@@ -1,48 +1,1 @@
-{
-  "info": {
-    "name": "Moon Puma - Auth",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "variable": [
-    {
-      "key": "baseUrl",
-      "value": "http://localhost:3001/api"
-    }
-  ],
-  "item": [
-    {
-      "name": "Register",
-      "request": {
-        "method": "POST",
-        "header": [{ "key": "Content-Type", "value": "application/json" }],
-        "url": {
-          "raw": "{{baseUrl}}/auth/register",
-          "host": ["{{baseUrl}}"],
-          "path": ["auth", "register"]
-        },
-        "body": {
-          "mode": "raw",
-          "options": { "raw": { "language": "json" } },
-          "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\",\n  \"login\": \"testuser\"\n}"
-        }
-      }
-    },
-    {
-      "name": "Login",
-      "request": {
-        "method": "POST",
-        "header": [{ "key": "Content-Type", "value": "application/json" }],
-        "url": {
-          "raw": "{{baseUrl}}/auth/login",
-          "host": ["{{baseUrl}}"],
-          "path": ["auth", "login"]
-        },
-        "body": {
-          "mode": "raw",
-          "options": { "raw": { "language": "json" } },
-          "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
-        }
-      }
-    }
-  ]
-}
+{  "info": {    "name": "Moon Puma - Auth",    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"  },  "variable": [    {      "key": "baseUrl",      "value": "http://localhost:3001/api"    }  ],  "item": [    {      "name": "Register",      "request": {        "method": "POST",        "header": [{ "key": "Content-Type", "value": "application/json" }],        "url": {          "raw": "{{baseUrl}}/auth/register",          "host": ["{{baseUrl}}"],          "path": ["auth", "register"]        },        "body": {          "mode": "raw",          "options": { "raw": { "language": "json" } },          "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\",\n  \"login\": \"testuser\"\n}"        }      }    },    {      "name": "Login",      "request": {        "method": "POST",        "header": [{ "key": "Content-Type", "value": "application/json" }],        "url": {          "raw": "{{baseUrl}}/auth/login",          "host": ["{{baseUrl}}"],          "path": ["auth", "login"]        },        "body": {          "mode": "raw",          "options": { "raw": { "language": "json" } },          "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"        }      }    }  ]}
