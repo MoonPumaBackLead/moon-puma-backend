@@ -6,10 +6,7 @@ import { UsersRepository } from '@/apps/api/src/users/users.repository';
 export class UsersService {
   constructor(private usersRepository: UsersRepository) {}
 
-  public findByEmailOrLogin(
-    email: string,
-    login: string,
-  ): Promise<User | null> {
+  public findByEmailOrLogin(email: string, login: string): Promise<User | null> {
     return this.usersRepository.findByEmailOrLogin(email, login);
   }
 

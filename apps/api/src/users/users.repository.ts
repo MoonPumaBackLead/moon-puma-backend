@@ -11,8 +11,10 @@ export class UsersRepository {
     return this.prisma.user.findUnique({ where: { id } });
   }
 
-  findByEmailOrLogin(email: string, login:string) {
-    return this.prisma.user.findFirst({  where: { OR: [{ email }, { login }] } });
+  findByEmailOrLogin(email: string, login: string) {
+    return this.prisma.user.findFirst({
+      where: { OR: [{ email }, { login }] },
+    });
   }
 
   async create(data: Prisma.UserCreateInput): Promise<User> {

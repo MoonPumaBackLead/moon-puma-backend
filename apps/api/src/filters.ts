@@ -3,21 +3,18 @@ import { Request, Response } from 'express';
 
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
-  // catch(exception: HttpException, host: ArgumentsHost) {
-  catch(exception: any, host: ArgumentsHost) {
-    debugger
+  catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
     const status = exception.getStatus();
-debugger
-    response
-      .status(status)
-      .json({
-        message: Array.isArray(exception?.response?.message) ? exception?.response?.message?.join(', ') : exception?.response?.message,
-        statusCode: status,
-        timestamp: new Date().toISOString(),
-        path: request.url,
-      });
+    response.status(status).json({
+      message: Array.isArray(exception?.response?.message)
+        ? exception?.response?.message?.join(', ')
+        : exception?.response?.message,
+      statusCode: status,
+      timestamp: new Date().toISOString(),
+      path: request.url,
+    });
   }
 }

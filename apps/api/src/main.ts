@@ -24,7 +24,6 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
 
   await app.listen(process.env.PORT ?? port);
-  // eslint-disable-next-line no-console
   console.log(`API listening on http://localhost:${port}/${prefix}`);
 }
 bootstrap();
