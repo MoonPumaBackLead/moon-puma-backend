@@ -9,12 +9,14 @@ import { AuthController } from './auth.controller';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { AuthService } from './auth.service';
 import { UsersModule } from '../users/users.module';
+import { CustomMailerModule } from '@/apps/api/src/adapters/mailer/mailer.module';
 
 @Module({
   imports: [
     PassportModule,
     UsersModule,
     ConfigModule,
+    CustomMailerModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],

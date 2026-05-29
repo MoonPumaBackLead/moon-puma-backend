@@ -5,6 +5,7 @@ import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { LoginDto } from '@/apps/api/src/auth/dto/login.dto';
 import { RegisterDto } from '@/apps/api/src/auth/dto/register.dto';
+import { MailerService } from '../adapters/mailer/mailer.service';
 
 type AuthResponse = any;
 
